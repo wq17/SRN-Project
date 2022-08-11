@@ -238,3 +238,21 @@ if __name__ == '__main__':
               condition_labels=['words', 'part-words'], first_moment='mean')
     SuperPlot(data_two, experiment_name="Experiment 2", 
               condition_labels=['words', 'part-words'], first_moment='mean')
+    
+    # Normality test for data in each condition for Experiment 1 and 2
+    normal_words_one = normaltest(data_one[:,0], axis=0, 
+                                  nan_policy='propagate')
+    normal_pw_one = normaltest(data_one[:,1], axis=0, 
+                               nan_policy='propagate')
+    normal_words_two = normaltest(data_two[:,0], axis=0, 
+                                  nan_policy='propagate')
+    normal_pw_two = normaltest(data_two[:,1], axis=0, 
+                               nan_policy='propagate')
+
+    # Wilcoxon signed-rank test (matched pairs) for Experiment 1 and 2
+    wilcox_one = wilcoxon(x=data_one[:,0], y=data_one[:,1], 
+                          zero_method='wilcox', correction=False, 
+                          alternative='two-sided', mode='auto')
+    wilcox_two = wilcoxon(x=data_two[:,0], y=data_two[:,1], 
+                          zero_method='wilcox', correction=False, 
+                          alternative='two-sided', mode='auto')
