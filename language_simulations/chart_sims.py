@@ -353,3 +353,8 @@ def make_chart(languages):
         
     return array_final
 
+################################## Main #########################################
+if __name__== '__main__':
+    
+    # Make chart
+    make_chart(languages)
