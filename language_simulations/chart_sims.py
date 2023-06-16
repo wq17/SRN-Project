@@ -358,3 +358,4 @@ if __name__== '__main__':
     
     # Make chart
     make_chart(languages)
+    print(array_final)
